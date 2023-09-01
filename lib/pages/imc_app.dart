@@ -14,7 +14,7 @@ class _AppImcState extends State<AppImc> {
   var nomeController = TextEditingController();
   var alturaController = TextEditingController();
   var pesoController = TextEditingController();
-  var _pessoa = <Pessoa>[];
+  var _pessoa = Pessoa();
   String imcDefinido = "";
   var tabelaImc = TabelaImc();
 
@@ -52,9 +52,9 @@ class _AppImcState extends State<AppImc> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("Nome \n ${nomeController.text}"),
-                          Text("Peso \n ${pesoController.text}"),
-                          Text("Altura \n ${alturaController.text}"),
+                          Text("Nome \n ${_pessoa.nome}"),
+                          Text("Peso \n ${_pessoa.peso}"),
+                          Text("Altura \n ${_pessoa.altura}"),
                         ],
                       ),
                       const SizedBox(
@@ -129,6 +129,9 @@ class _AppImcState extends State<AppImc> {
                       var calculado = calcularImc(novoValor, novoValor2);
                       setState(() {
                         imcDefinido = tabelaImc.retornoImc(calculado);
+                        _pessoa.nome = nomeController.text;
+                        _pessoa.peso = novoValor;
+                        _pessoa.altura = novoValor2;
                       });
 
                       Future.delayed(const Duration(minutes: 1));

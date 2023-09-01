@@ -3,7 +3,7 @@ class Pessoa {
   double _peso = 0;
   double _altura = 0;
 
-  Pessoa(this._nome, this._peso, this._altura);
+  Pessoa();
 
   //getters
   String get nome => _nome;
