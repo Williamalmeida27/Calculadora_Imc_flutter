@@ -1,5 +1,6 @@
-class TabelaImc {
-  String retornoImc(double imc) {
+class ImcRepository {
+  String retornoImc(double peso, double altura) {
+    var imc = calcularImc(peso, altura);
     var tabelaImc = '';
 
     switch (imc) {
@@ -31,5 +32,11 @@ class TabelaImc {
         return "Nenhum valor retornado";
     }
     return tabelaImc;
+  }
+
+  double calcularImc(double peso, double altura) {
+    double imcCalculado = peso / (altura * 2);
+    String imcCalculadoDecimal = imcCalculado.toStringAsFixed(2);
+    return double.parse(imcCalculadoDecimal);
   }
 }
